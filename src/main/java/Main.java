@@ -3,6 +3,7 @@
 
 
 
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -11,8 +12,6 @@ public class Main {
     //java -jar Fraction.jar "18\135" "sub" "7\93"
     //java -jar Fractions-1.0-SNAPSHOT.jar "18\135" "add" "7\93"
     //"18\135" "add" "7\93"
-
-
 
 
     public static void main(String[] args) throws Exception {
@@ -41,8 +40,8 @@ public class Main {
         ZR[] ZRArray = new ZR[256];
         Random random = new Random();
         for (int i = 0; i < ZRArray.length; i++) {
-            int num = (short) (random.nextBoolean() ? 1 : -1 )*random.nextInt(Short.MAX_VALUE + 1);
-            int den = (short) (random.nextBoolean() ? 1 : -1 )*random.nextInt(Short.MAX_VALUE + 1);
+            int num = (short) (random.nextBoolean() ? 1 : -1) * random.nextInt(Short.MAX_VALUE + 1);
+            int den = (short) (random.nextBoolean() ? 1 : -1) * random.nextInt(Short.MAX_VALUE + 1);
 
            /* short a = (short)n;
             short b = (short)d;
@@ -50,23 +49,80 @@ public class Main {
             Integer den = Integer.valueOf((short)b);//Alt method;*/
 
             if (den < 0)
-                den = den * (-1);{
+                den = den * (-1);
+            {
 
-           ZRArray[i] = new ZR(num, den);
+                ZRArray[i] = new ZR(num, den);
             }
             System.out.println(ZRArray[i]);
         }
-        System.out.println(Z0.toString() + " " + args[1] + " " + Z1.toString() + " = " + RESULT.toString());
 
+        System.out.println("/////////////////////////////////////////////////////////////////////////////////////");
+//взять нулевой и первый члены массива;
+        //сравнить;
+        //повторить?
 
+        for (Integer i = 0; i < ZRArray.length; i++) {
 
-
-        }
+            for (Integer j = i + 1; j < ZRArray.length; j++) {
+                Integer com = ZRArray[i].compareTo(ZRArray[j]);
+                if (com == -1) {
+                    ZR tmp = ZRArray[i].evc();
+                    ZRArray[i] = ZRArray[j].evc();
+                    ZRArray[j] = tmp.evc();
+                    ZRArray[j].evc();
+                }
+                for (Integer k = 0; k < ZRArray.length; k++) {
+                    ZRArray[k].evc();
+                }
             }
+            System.out.println(ZRArray[i]);
+       }
+
+
+                System.out.println("///////////////////////////////////////////////////////////////////////////////");
+
+                //взять нулевой элемент
+                //в цикле от 1 до длины массива дробей, умножить элемент из строчки пред-й на др с инд
+                //распечатать результат
+                ZR first = ZRArray[0];
+
+                for (Integer i = 1; i < ZRArray.length; i++) {
+
+                    first = first.evc().mul(ZRArray[i]);
+
+
+                    for (i = 0; i < ZRArray.length; i++)
+                        first = first.evc();
+
+
+                }
+                System.out.println(first.evc().toString());
+            }
+        }
 
 
 
 
+                /* if (num1 > num2) {
+                ZRArray[j].evc();
+
+            } else if(num1<num2) {
+
+                    ZR tmp = ZRArray[j].evc();
+                    ZRArray[j] = ZRArray[j+1].evc();
+                    ZRArray[j+1] = tmp.evc();*/
+
+
+
+
+
+
+/*boolean needIteration = true;
+                    while (needIteration) {
+                        needIteration = false;
+                        for (int i = 1; i < ZRArray.length; i++) {
+                            if (ZRArray[i.num] < num2) {*/
 
        // int indexOfMax(int[] array)
 
@@ -108,18 +164,25 @@ public class Main {
 
 
 
-/* for (Integer k = 0; k < ZRArray.length-1; k++) {
-            for (Integer j = ZRArray.length - 1; j > k; j++){
+/*   Integer num1 = a.getNum();
+                Integer num2 = b.getNum();
+                Integer den1 = a.getDen();
+                Integer den2 = b.getDen();
+                if (num1 < num2) {
+                    tmp = ZRArray[i].evc();
+                    ZRArray[i] = ZRArray[j].evc();
+                    ZRArray[j] = tmp.evc();
+                    tmp = ZRArray[i].evc();
+                }else {ZRArray[i].evc();
+                    }
+                }*/
 
-            ZR a = ZRArray[j].mincomden(ZRArray[j ]).evc();
-            ZR b = ZRArray[j + 1].evc().mincomden(ZRArray[j]);
-            Integer num1 = a.getNum();
-            Integer num2 = b.getNum();
+/*for (Integer i = 0; i < ZRArray.length; i++) {
+           ZR zero=ZRArray[]
+           ZR zero=zero.mincomden(ZRArray[i]);
 
-            if (num1 > num2) {
-                ZR temp = ZRArray[j];
-                ZRArray[j-1] = ZRArray[j - 1];
-                ZRArray[j] = temp.evc();
+               for( i=0; i<ZRArray.length; i++){
+                zero=ZRArray[i].evc();
 
-                System.out.println(ZRArray[j]);
+                   System.out.println(zero);
                 }*/
